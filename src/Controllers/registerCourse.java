@@ -113,8 +113,10 @@ public class registerCourse {
             System.out.println("Choose an index number:");
             indexNumber = sc.nextLine();
         }
-        // ADD WAITLIST CODE HERE
-        Integer vacancy = 0;
+        // indexNumber is what he is choosing, index is who he is. Find possible clashes.
+        LocalTime startTime = null;
+        LocalTime endTime = null;
+        String day = null;
         try {
             String text;
             File file = new File("Courses.txt");
@@ -125,59 +127,110 @@ public class registerCourse {
                 //System.out.println(text);
                 String[] values = text.split(",");
                 if(values[2].equals(indexNumber)){
-                    vacancy = Integer.parseInt(values[3]);
+                    day = values[4];
+                    startTime = LocalTime.parse(values[6]);
+                    endTime = LocalTime.parse(values[7]);
                 }
             }
             ab.close();
-            //System.out.println(hashSet);
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
         }
 
-        if(vacancy == 0){
-            try {
-                String Save = indexNumber + ',' + index;
-                File file = new File("Waitlist.txt");
-                FileWriter fr = new FileWriter(file, true);
-                BufferedWriter br = new BufferedWriter(fr);
-                PrintWriter pr = new PrintWriter(br);
-                pr.println(Save);
-                pr.close();
-                br.close();
-                fr.close();
-                //System.out.println("SUCCESS");
+        boolean clashes = false;
+        try {
+            String text;
+            File file = new File("Courses.txt");
+            Scanner ab = new Scanner(file);
+
+            while(ab.hasNextLine()) {
+                text = ab.nextLine();
+                //System.out.println(text);
+                String[] values = text.split(",");
+                if(currentIndexes.contains(values[2]) && values[4].equals(day)){
+                    if( (LocalTime.parse(values[6]).isAfter(startTime) && LocalTime.parse(values[6]).isBefore(endTime)) ||  (LocalTime.parse(values[7]).isAfter(startTime) && LocalTime.parse(values[7]).isBefore(endTime))){
+                        clashes = true;
+                    }
+                }
             }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Student added to waitlist!");
+            ab.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        if(clashes){
+            System.out.println("Course timing clashes with another registered course!");
         }
         else{
-            String Save = indexNumber + ',' + index;
+            // ADD WAITLIST CODE HERE
+            Integer vacancy = 0;
             try {
-                File file = new File("RegisteredCourses.txt");
-                FileWriter fr = new FileWriter(file, true);
-                BufferedWriter br = new BufferedWriter(fr);
-                PrintWriter pr = new PrintWriter(br);
-                pr.println(Save);
-                pr.close();
-                br.close();
-                fr.close();
-                //System.out.println("SUCCESS");
+                String text;
+                File file = new File("Courses.txt");
+                Scanner ab = new Scanner(file);
+
+                while(ab.hasNextLine()) {
+                    text = ab.nextLine();
+                    //System.out.println(text);
+                    String[] values = text.split(",");
+                    if(values[2].equals(indexNumber)){
+                        vacancy = Integer.parseInt(values[3]);
+                    }
+                }
+                ab.close();
+                //System.out.println(hashSet);
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
+                System.exit(0);
             }
 
-            Controllers.decreaseVacancy.main(indexNumber);
+            if(vacancy == 0){
+                try {
+                    String Save = indexNumber + ',' + index;
+                    File file = new File("Waitlist.txt");
+                    FileWriter fr = new FileWriter(file, true);
+                    BufferedWriter br = new BufferedWriter(fr);
+                    PrintWriter pr = new PrintWriter(br);
+                    pr.println(Save);
+                    pr.close();
+                    br.close();
+                    fr.close();
+                    //System.out.println("SUCCESS");
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Student added to waitlist!");
+            }
+            else{
+                String Save = indexNumber + ',' + index;
+                try {
+                    File file = new File("RegisteredCourses.txt");
+                    FileWriter fr = new FileWriter(file, true);
+                    BufferedWriter br = new BufferedWriter(fr);
+                    PrintWriter pr = new PrintWriter(br);
+                    pr.println(Save);
+                    pr.close();
+                    br.close();
+                    fr.close();
+                    //System.out.println("SUCCESS");
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Controllers.decreaseVacancy.main(indexNumber);
+            }
         }
 
     }

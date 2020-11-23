@@ -5,28 +5,53 @@ import java.time.LocalTime;
 import java.util.*;
 import Models.Manager;
 import java.io.Console;
+import java.util.InputMismatchException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 public class studentLogin {
-    public static void main(Manager manager)  {
+    public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+    {
+        // Static getInstance method is called with hashing SHA
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        // digest() method called
+        // to calculate message digest of an input
+        // and return array of byte
+        return md.digest(input.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static String toHexString(byte[] hash)
+    {
+        // Convert byte array into signum representation
+        BigInteger number = new BigInteger(1, hash);
+
+        // Convert message digest into hex value
+        StringBuilder hexString = new StringBuilder(number.toString(16));
+
+        // Pad with leading zeros
+        while (hexString.length() < 32)
+        {
+            hexString.insert(0, '0');
+        }
+
+        return hexString.toString();
+    }
+    public static void main(Manager manager) throws NoSuchAlgorithmException {
         Scanner sc = new Scanner(System.in);
         LocalTime time = LocalTime.now();
         //boolean studentTimeCheck =  manager.checkTime(time);
         boolean studentTimeCheck = true;
         if(studentTimeCheck)
         {
-            char[] pwd;
-            Console cons = System.console();
             String id;
             String password;
             System.out.print("Enter Id: ");
             id = sc.nextLine();
             System.out.print("Enter password: ");
-            if(cons == null){
-                password = sc.nextLine();
-            }
-            else{
-                pwd = cons.readPassword();
-                password = new String(pwd);
-            }
+            password = sc.nextLine();
+            String hashedPwd = toHexString(getSHA(password));
 
             //int login = manager.validateStudent(id, password);
 
@@ -42,7 +67,7 @@ public class studentLogin {
 
                     if(values[0].equals(id)) {
                         //System.out.println("Found the ID");
-                        if(values[3].equals(password)) {
+                        if(values[3].equals(hashedPwd)) {
                             System.out.println("Login successful!");
                             ab.close();
                             manager.studentMenu(values[0]);

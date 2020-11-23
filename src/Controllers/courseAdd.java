@@ -13,7 +13,7 @@ public class courseAdd {
         Course ab;
 
         ab = (Course) courses.get(courses.size() - 1);
-        Save += ab.getSchool() +  ',' + (ab.getCourseCode()) + ',' + (ab.getIndexNumber()) + ',' + ab.getVacancy();
+        Save += ab.getSchool() +  ',' + (ab.getCourseCode()) + ',' + (ab.getIndexNumber()) + ',' + ab.getVacancy() + ',' + ab.getday() + ',' + ab.getVenue() + ',' +  ab.getStartTime().toString() + ',' + ab.getEndTime().toString();
         //System.out.println(ab.getIndexNumber());
 
         Boolean exists = false;

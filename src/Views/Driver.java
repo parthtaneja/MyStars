@@ -2,6 +2,7 @@ package Views;
 
 import Models.Manager;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Driver {
@@ -43,7 +44,7 @@ public class Driver {
 			}
 			}
 		}
-		catch(InputMismatchException ex) 
+		catch(InputMismatchException | NoSuchAlgorithmException ex)
 		{
 			System.out.println("Enter a valid integer values");
 			sc.next();

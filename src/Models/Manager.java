@@ -10,7 +10,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 public class Manager {
 	
 	private static Manager instance = null;
@@ -166,7 +169,7 @@ public class Manager {
 				}
 
 			}
-			catch(InputMismatchException | IOException e)
+			catch(InputMismatchException | IOException | NoSuchAlgorithmException e)
 			{
 				System.out.println("Please Enter a Integer");
 				sc.nextLine();
@@ -180,8 +183,37 @@ public class Manager {
 
 	}
 
-	private void addStudent()
+
+	public static byte[] getSHA(String input) throws NoSuchAlgorithmException
 	{
+		// Static getInstance method is called with hashing SHA
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+		// digest() method called
+		// to calculate message digest of an input
+		// and return array of byte
+		return md.digest(input.getBytes(StandardCharsets.UTF_8));
+	}
+
+	public static String toHexString(byte[] hash)
+	{
+		// Convert byte array into signum representation
+		BigInteger number = new BigInteger(1, hash);
+
+		// Convert message digest into hex value
+		StringBuilder hexString = new StringBuilder(number.toString(16));
+
+		// Pad with leading zeros
+		while (hexString.length() < 32)
+		{
+			hexString.insert(0, '0');
+		}
+
+		return hexString.toString();
+	}
+
+
+	private void addStudent() throws NoSuchAlgorithmException {
 		String name; 
 		String matricNumber;
 		String gender; 
@@ -199,7 +231,9 @@ public class Manager {
 		password = sc.nextLine();
 		System.out.print("Matric Number: ");
 		matricNumber = sc.nextLine();
-		Student student = new Student(name, matricNumber, gender, nationality, password);
+		String hashedPwd = toHexString(getSHA(password));
+		System.out.println(hashedPwd);
+		Student student = new Student(name, matricNumber, gender, nationality, hashedPwd);
 		studentList.add(student);
 		Controllers.studentAdd.main(studentList);
 		
@@ -211,17 +245,29 @@ public class Manager {
 		String school; 
 		int indexNumber; 
 		int vacancy;
+		String venue;
+		String day;
+		int Start;
+		int End;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Course Information");
 		System.out.print("School: ");
 		school = sc.nextLine();
 		System.out.print("Course Code: ");
 		courseCode = sc.nextLine();
+		System.out.print("Venue: ");
+		venue = sc.nextLine();
+		System.out.print("Day: ");
+		day = sc.nextLine();
 		System.out.print("Index Number: ");
 		indexNumber = sc.nextInt();
 	    System.out.print("Vacancy: ");
 	    vacancy = sc.nextInt();
-	    Course course = new Course(courseCode, school, indexNumber, vacancy);
+		System.out.print("Start Time (Hour) : ");
+		Start = sc.nextInt();
+		System.out.print("End Time (Hour): ");
+		End = sc.nextInt();
+	    Course course = new Course(courseCode, school, indexNumber, vacancy, day, venue, Start, End);
 	    courseList.add(course);
 	    //System.out.println("New Models.Course Added To System");
 		Controllers.courseAdd.main(courseList);
