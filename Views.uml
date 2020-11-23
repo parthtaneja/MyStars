@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Views</OriginalElement>
+  <nodes>
+    <node x="92.5" y="104.0">Views.Driver</node>
+    <node x="0.0" y="0.0">Views.studentLogin</node>
+    <node x="177.0" y="0.0">Views.adminLogin</node>
+    <node x="96.5" y="208.0">Views.StudentMenu</node>
+    <node x="0.0" y="307.0">Views.registeredCourses</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="167.0" y="180.5" />
+  <SelectedNodes>
+    <node>Views.Driver</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
