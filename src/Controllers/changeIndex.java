@@ -10,6 +10,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class changeIndex {
+    /**
+     * main function
+     * To Change index number for each individual
+     * @param studentID ID of student
+     * @return void
+     */
     public static void main(String index) throws IOException {
         Scanner sc = new Scanner(System.in);
         String indexNumber;
