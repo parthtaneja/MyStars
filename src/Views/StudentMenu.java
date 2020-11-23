@@ -14,14 +14,16 @@ public class StudentMenu {
             try
             {
                 int choice;
-                System.out.println("Welcome to Student Menu");
+                System.out.println("------------------------------------------");
+                System.out.println("Welcome to Student Menu!");
                 System.out.println("1. Add Course");
                 System.out.println("2. Drop Course");
                 System.out.println("3. Display Registered Course");
                 System.out.println("4. Check Vacancies Available");
-                System.out.println("5. Change index number of Models.Course");
-                System.out.println("6. Swap Index Number with Another Student");
+                System.out.println("5. Change index number of Course");
+                System.out.println("6. Swap Index number with another Student");
                 System.out.println("7. Logout");
+                System.out.println("------------------------------------------");
                 System.out.print("Your Option: ");
                 choice = sc.nextInt();
                 switch (choice) {

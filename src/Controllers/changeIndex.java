@@ -96,5 +96,7 @@ public class changeIndex {
         Files.deleteIfExists(Paths.get("RegisteredCourses.txt"));
         Path source = Paths.get("RTemp.txt");
         Files.move(source, source.resolveSibling("RegisteredCourses.txt"));
+        Controllers.increaseVacancy.main(indexNumber);
+        Controllers.decreaseVacancy.main(newIndex);
     }
 }

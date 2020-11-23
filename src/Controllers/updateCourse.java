@@ -30,7 +30,7 @@ public class updateCourse {
         System.out.print("Vacancy: ");
         newvacancy = sc.nextInt();
 
-        File file = new File("CoursesTemp.txt");
+        File file = new File("Courses.txt");
         FileWriter fr = new FileWriter(file, true);
         BufferedWriter br = new BufferedWriter(fr);
         PrintWriter pr = new PrintWriter(br);
@@ -58,7 +58,7 @@ public class updateCourse {
         fr.close();
 
         Files.deleteIfExists(Paths.get("Courses.txt"));
-        Path source = Paths.get("CoursesTemp.txt");
+        Path source = Paths.get("Courses.txt");
         Files.move(source, source.resolveSibling("Courses.txt"));
     }
 }

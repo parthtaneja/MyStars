@@ -7,17 +7,18 @@ import java.util.Scanner;
 public class Driver {
 	
    public static void main(String agrs[]) {
-	  
+	   System.out.println("Welcome! Login Menu:");
 	   Manager manager = Manager.getInstance();
 	   Scanner sc = new Scanner(System.in); 
 	   while (true) {
 		try 
 		{
 			int choice;
-			System.out.println("Welcome ");
-			System.out.println("1. To login as Admin");
-			System.out.println("2. to login as Student");
-			System.out.println("3. To Exit");
+			System.out.println("------------------------------------------");
+			System.out.println("1. Login as Admin");
+			System.out.println("2. Login as Student");
+			System.out.println("3. Exit");
+			System.out.println("------------------------------------------");
 			System.out.print("Your Choice: ");
 			choice = sc.nextInt();
 			switch (choice) {

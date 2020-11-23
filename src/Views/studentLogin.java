@@ -4,7 +4,7 @@ import java.io.*;
 import java.time.LocalTime;
 import java.util.*;
 import Models.Manager;
-
+import java.io.Console;
 public class studentLogin {
     public static void main(Manager manager)  {
         Scanner sc = new Scanner(System.in);
@@ -13,12 +13,21 @@ public class studentLogin {
         boolean studentTimeCheck = true;
         if(studentTimeCheck)
         {
+            char[] pwd;
+            Console cons = System.console();
             String id;
             String password;
             System.out.print("Enter Id: ");
             id = sc.nextLine();
             System.out.print("Enter password: ");
-            password = sc.nextLine();
+            if(cons == null){
+                password = sc.nextLine();
+            }
+            else{
+                pwd = cons.readPassword();
+                password = new String(pwd);
+            }
+
             //int login = manager.validateStudent(id, password);
 
 

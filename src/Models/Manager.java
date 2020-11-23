@@ -61,8 +61,7 @@ public class Manager {
 		return false;
 	}
 	
-	public static void addCourse(String index)
-	{
+	public static void addCourse(String index) throws IOException {
 		Controllers.registerCourse.main(index);
 
 	}
@@ -106,7 +105,7 @@ public class Manager {
 			int choice;
 			try
 			{
-
+				System.out.println("------------------------------------------");
 				System.out.println("Welcome To Admin Menu");
 				System.out.println("1. Edit student acesss period");
 				System.out.println("2. Add a student");
@@ -114,7 +113,9 @@ public class Manager {
 				System.out.println("4. Update a course");
 				System.out.println("5. Check available slot for an index number");
 				System.out.println("6. Print student list By index number");
-				System.out.println("7. Logout");
+				System.out.println("7. Print student list By course code");
+				System.out.println("8. Logout");
+				System.out.println("------------------------------------------");
 				System.out.print("Your Choice: ");
 				choice = sc.nextInt();
 				switch (choice)
@@ -151,6 +152,11 @@ public class Manager {
 					}
 					case 7:
 					{
+						printStudentbyCourse();
+						break;
+					}
+					case 8:
+					{
 						Views.Driver.main(null);
 					}
 					default:
@@ -167,6 +173,11 @@ public class Manager {
 			}
 
 		}
+	}
+
+	private void printStudentbyCourse() {
+		Controllers.displayStudentsByCourse.main(null);
+
 	}
 
 	private void addStudent()
@@ -190,7 +201,6 @@ public class Manager {
 		matricNumber = sc.nextLine();
 		Student student = new Student(name, matricNumber, gender, nationality, password);
 		studentList.add(student);
-		System.out.println("New Models.Student Add To System With Models.Student Id: "+student.getStudentID());
 		Controllers.studentAdd.main(studentList);
 		
 	}
@@ -213,7 +223,7 @@ public class Manager {
 	    vacancy = sc.nextInt();
 	    Course course = new Course(courseCode, school, indexNumber, vacancy);
 	    courseList.add(course);
-	    System.out.println("New Models.Course Added To System");
+	    //System.out.println("New Models.Course Added To System");
 		Controllers.courseAdd.main(courseList);
 	}
 
