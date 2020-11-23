@@ -11,7 +11,6 @@ public class studentAdd {
     /**
      * main function
      * To Remove the Courses for each Student
-     * @param Arraylist The type is of Arraylist
      * @param students Arraylist of objects, Students
      * @return void
      */

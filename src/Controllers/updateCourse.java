@@ -13,6 +13,7 @@ public class updateCourse {
     /**
      * main function
      * Allows the updating of Courses to allow the change of course to another type
+     *
      * @param args string
      * @return void
      */
@@ -44,17 +45,16 @@ public class updateCourse {
         File rfile = new File("Courses.txt");
         Scanner ab = new Scanner(rfile);
         String text;
-        while(ab.hasNextLine()) {
+        while (ab.hasNextLine()) {
             text = ab.nextLine();
             //System.out.println(text);
             String[] values = text.split(",");
 
-            if(values[1].equals(courseCode)) {
+            if (values[1].equals(courseCode)) {
                 //System.out.println("Found the ID");
                 String Save = newschool + ',' + newCourseCode + ',' + newindexNumber + ',' + newvacancy;
                 pr.println(Save);
-            }
-            else{
+            } else {
                 pr.println(text);
             }
         }
@@ -67,4 +67,6 @@ public class updateCourse {
         Path source = Paths.get("CoursesTemp.txt");
         Files.move(source, source.resolveSibling("Courses.txt"));
     }
+
+
 }
