@@ -1,7 +1,5 @@
 package Models;
-import Controllers.Login;
-import Controllers.SendEmail;
-import Controllers.studentAdd;
+import Controllers.*;
 import Views.Driver;
 import java.io.IOException;
 import java.io.*;
@@ -432,6 +430,18 @@ public class Manager {
 	 */
 	private void editStudentPeriod()
 	{
+		RegistrationPeriod rp = new RegistrationPeriod();
+		//rp.setRegistrationPeriod();
+		if ( !rp.read() ){ // This function will check if registrartion period is active
+			System.out.println("OOPS....Your registration period is inactive.Logging out now\n");}
+		//rp.setRegistrationPeriod();
+
+		//ActivePeriod activePeriod = new ActivePeriod();
+		//if ( !rp.read() ){ // This function will check if registrartion period is active
+		//	System.out.println("OOPS....Your registration period is inactive.Logging out now\n");
+		//	//return;
+		//}
+
 		Scanner sc = new Scanner(System.in);
 	    int start, end;
 	    System.out.print("Enter start value for student time (hour): ");

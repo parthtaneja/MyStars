@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.*;
 import java.time.LocalTime;
 import java.util.*;
+
+import Controllers.RegistrationPeriod;
 import Models.Manager;
 
 public class studentLogin {
@@ -17,7 +19,9 @@ public class studentLogin {
         LocalTime time = LocalTime.now();
         //boolean studentTimeCheck =  manager.checkTime(time);
         boolean studentTimeCheck = true;
-        if(studentTimeCheck)
+        RegistrationPeriod rp = new RegistrationPeriod();
+        if (rp.read())
+       // if(studentTimeCheck)
         {
             String id;
             String password;

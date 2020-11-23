@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/Controllers/javax.mail.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/Controllers/javax.activation-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Controllers/joda-time-2.10.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
