@@ -149,8 +149,8 @@ public class RegistrationPeriod {
                 String[] tokens = str.split(",");
                 String t1[] = tokens[0].split("-");
                 String t2[] = tokens[1].split("-");
-                //String t33 = tokens[2];
-                //String t44 = tokens[3];
+                String t33 = tokens[2];
+                String t44 = tokens[3];
 
                 String d1 = t1[0];
                 String m1 = t1[1];
@@ -165,19 +165,33 @@ public class RegistrationPeriod {
                 int d22 = Integer.parseInt(d2);
                 int m22 = Integer.parseInt(m2);
                 int y22 = Integer.parseInt(y2);
-                //int tstart = Integer.parseInt(t33);
-                //int tend = Integer.parseInt(t44);
+                int tstart = Integer.parseInt(t33);
+                int tend = Integer.parseInt(t44);
 
-                System.out.println("dogggy");
+                //System.out.println("dogggy");
 
                 DateTime start = new DateTime(y11, m11, d11, 0, 0, 0, 0);
                 DateTime end = new DateTime(y22, m22, d22, 0, 0, 0, 0);
                 DateTime now = new DateTime();
+
+                int hour = now.getHourOfDay();
+                //System.out.println(hour);
+                //System.out.println(tstart);
+                //System.out.println(tend);
+                boolean a = false;
+
+                if (hour > tstart && hour < tend) {
+                    //System.out.println("hi");
+                    a = true;
+                }
+
                 Interval interval = new Interval(start, end);
 
-                System.out.println(interval.contains(now));
+                //System.out.println(interval.contains(now));
 
-                return interval.contains(now);
+                boolean timing = interval.contains(now) && a;
+
+                return timing;
 
 
             }

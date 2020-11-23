@@ -175,6 +175,7 @@ public class Manager {
 				System.out.println("5. Check available slot for an index number");
 				System.out.println("6. Print student list By index number");
 				System.out.println("7. Logout");
+				System.out.println("8. Print by Course");
 				System.out.print("Your Choice: ");
 				choice = sc.nextInt();
 				switch (choice)
@@ -212,6 +213,10 @@ public class Manager {
 					case 7:
 					{
 						Views.Driver.main(null);
+					}
+					case 8:
+					{
+						Controllers.printCourse.main(null);
 					}
 					default:
 					{
@@ -431,7 +436,8 @@ public class Manager {
 	private void editStudentPeriod()
 	{
 		RegistrationPeriod rp = new RegistrationPeriod();
-		//rp.setRegistrationPeriod();
+		rp.setRegistrationPeriod();
+
 		if ( !rp.read() ){ // This function will check if registrartion period is active
 			System.out.println("OOPS....Your registration period is inactive.Logging out now\n");}
 		//rp.setRegistrationPeriod();

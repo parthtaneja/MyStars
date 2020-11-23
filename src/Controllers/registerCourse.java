@@ -13,7 +13,7 @@ public class registerCourse {
      * @param index string
      * @return void
      */
-    public static void main(String index)  {
+    public static void main(String index) {
         Set<String> hashSet = new HashSet<String>();
         Set<String> IndexhashSet = new HashSet<String>();
         System.out.println("Displaying all courses:");
@@ -22,7 +22,7 @@ public class registerCourse {
             File file = new File("Courses.txt");
             Scanner ab = new Scanner(file);
 
-            while(ab.hasNextLine()) {
+            while (ab.hasNextLine()) {
                 text = ab.nextLine();
                 //System.out.println(text);
                 String[] values = text.split(",");
@@ -30,8 +30,7 @@ public class registerCourse {
             }
             ab.close();
             System.out.println(hashSet);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
         }
@@ -39,7 +38,7 @@ public class registerCourse {
         String courseCode;
         System.out.print("Enter Course Code you want to add: ");
         courseCode = sc.nextLine();
-        while(!hashSet.contains(courseCode)){
+        while (!hashSet.contains(courseCode)) {
             System.out.print("Enter Course Code you want to add: ");
             courseCode = sc.nextLine();
         }
@@ -50,18 +49,17 @@ public class registerCourse {
             File file = new File("Courses.txt");
             Scanner ab = new Scanner(file);
 
-            while(ab.hasNextLine()) {
+            while (ab.hasNextLine()) {
                 text = ab.nextLine();
                 //System.out.println(text);
                 String[] values = text.split(",");
-                if(values[1].equals(courseCode)){
+                if (values[1].equals(courseCode)) {
                     IndexhashSet.add(values[2]);
                 }
             }
             ab.close();
             //System.out.println(hashSet);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
         }
@@ -70,7 +68,7 @@ public class registerCourse {
         System.out.println("Choose an index number:");
         indexNumber = sc.nextLine();
 
-        while(!IndexhashSet.contains(indexNumber)){
+        while (!IndexhashSet.contains(indexNumber)) {
             System.out.println("Choose an index number:");
             indexNumber = sc.nextLine();
         }
@@ -87,13 +85,24 @@ public class registerCourse {
             br.close();
             fr.close();
             System.out.println("SUCCESS");
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
+        String Saving = courseCode + ',' + indexNumber + ',' + index;
+        try {
+            File file = new File("Coursing.txt");
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            PrintWriter pr = new PrintWriter(br);
+            pr.println(Saving);
+            pr.close();
+            br.close();
+            fr.close();
+            System.out.println("SUCCESS");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
 }
