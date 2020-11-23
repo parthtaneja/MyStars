@@ -6,7 +6,13 @@ import javax.mail.internet.*;
 //import javax.activation.*;
 
 public class SendEmail {
-
+    /**
+     * Send function
+     * To Remove the Courses for each Student
+     * @param MessageToSend The message that we want to send to each Student
+     * @param recieverEmail The recieving Email
+     * @return void
+     */
 	public void Send( String recieverEmail , String MessageToSend ){
 		
         final String username = "javaboi123@gmail.com";

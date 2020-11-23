@@ -6,7 +6,14 @@ import java.util.*;
 import Models.Manager;
 import Views.Driver;
 import Models.Student;
+
 public class checkVacancy {
+    /**
+     * main function
+     * To Check the vacancy of each course
+     * @param index string
+     * @return void
+     */
     public static void main(String index){
         Scanner sc = new Scanner(System.in);
         String courseCode;

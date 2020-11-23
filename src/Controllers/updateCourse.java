@@ -10,6 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 public class updateCourse {
+    /**
+     * main function
+     * Allows the updating of Courses to allow the change of course to another type
+     * @param args string
+     * @return void
+     */
     public static void main(String args[]) throws IOException {
         Scanner sc = new Scanner(System.in);
         String courseCode;

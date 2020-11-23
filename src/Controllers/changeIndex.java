@@ -13,7 +13,7 @@ public class changeIndex {
     /**
      * main function
      * To Change index number for each individual
-     * @param studentID ID of student
+     * @param index string
      * @return void
      */
     public static void main(String index) throws IOException {

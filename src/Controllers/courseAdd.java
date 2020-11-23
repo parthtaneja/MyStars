@@ -8,6 +8,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class courseAdd {
+    /**
+     * main function
+     * To get the courses from Courses.txt
+     * @param index string
+     * @return void
+     */
     public static void main(ArrayList courses)  {
         String Save = "";
         Course ab;

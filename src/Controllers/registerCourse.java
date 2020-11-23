@@ -7,6 +7,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class registerCourse {
+    /**
+     * main function
+     * To Register the Course for each student
+     * @param index string
+     * @return void
+     */
     public static void main(String index)  {
         Set<String> hashSet = new HashSet<String>();
         Set<String> IndexhashSet = new HashSet<String>();

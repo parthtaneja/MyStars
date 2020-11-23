@@ -35,7 +35,11 @@ public class Manager {
 		endTime = LocalTime.of(18,0,0                  );
 		
 	}
-	
+
+	/**
+	 *
+	 * @return instance
+	 */
 	public static Manager getInstance() 
 	{
 		if(instance == null) 

@@ -10,6 +10,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class deregisterCourse {
+    /**
+     * main function
+     * To Remove the Courses for each Student
+     * @param index string
+     * @return void
+     */
     public static void main(String index) throws IOException {
         Set<String> hashSet = new HashSet<String>();
         System.out.println("Displaying all index numbers registered:");

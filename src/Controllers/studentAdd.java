@@ -8,6 +8,13 @@ import Views.Driver;
 import Models.Student;
 
 public class studentAdd {
+    /**
+     * main function
+     * To Remove the Courses for each Student
+     * @param Arraylist The type is of Arraylist
+     * @param students Arraylist of objects, Students
+     * @return void
+     */
     public static void main(ArrayList students)  {
         String Save = "";
         Student ab;

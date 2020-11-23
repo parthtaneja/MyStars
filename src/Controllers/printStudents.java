@@ -6,6 +6,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class printStudents {
+    /**
+     * main function
+     * To print the course for all student taking a specific course/index
+     * @param args string
+     * @return void
+     */
     public static void main(String args[]){
         Set<String> hashSet = new HashSet<String>();
         try {

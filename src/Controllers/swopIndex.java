@@ -10,6 +10,12 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class swopIndex {
+    /**
+     * main function
+     * Allows students to swap index with each other
+     * @param index string
+     * @return void
+     */
     public static void main(String index) throws IOException {
         String studentID;
         Scanner sc = new Scanner(System.in);
