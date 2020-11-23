@@ -13,17 +13,20 @@ public class Student {
 	private String nationality;
 	private String password;
 	private ArrayList<Course> courses;
+	private String email;
 	
-	public Student( String name, String matricNumber, String gender, String nationality, String password) {
+	public Student( String name, String matricNumber, String gender, String nationality, String password, String email) {
 		this.studentID = matricNumber;
 	    this.name = name;
 		this.matricNumber = matricNumber;
 		this.gender = gender;
 		this.nationality = nationality;
 		this.password = password;
+		this.email = email;
 		courses = new ArrayList<Course>();
 	}
 
+	public String getEmail() {return email;}
 	public String getStudentID() {
 		return studentID;
 	}

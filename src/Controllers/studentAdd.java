@@ -14,7 +14,7 @@ public class studentAdd {
         Student ab;
 
         ab = (Student) students.get(students.size() - 1);
-        Save += (ab.getStudentID()) + ',' + ab.getName() + ',' + (ab.getMatricNumber()) + ',' + ab.getPassword() + ',' + ab.getGender() + ',' + ab.getNationality();
+        Save += (ab.getStudentID()) + ',' + ab.getName() + ',' + (ab.getMatricNumber()) + ',' + ab.getPassword() + ',' + ab.getGender() + ',' + ab.getNationality() + ',' + ab.getEmail();
         //System.out.println(Save);
         Boolean exists = false;
         try {

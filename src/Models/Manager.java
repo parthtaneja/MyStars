@@ -214,7 +214,8 @@ public class Manager {
 
 
 	private void addStudent() throws NoSuchAlgorithmException {
-		String name; 
+		String name;
+		String email;
 		String matricNumber;
 		String gender; 
 		String nationality; 
@@ -223,6 +224,8 @@ public class Manager {
 		System.out.println("Enter Student Information");
 		System.out.print("Name: ");
 		name = sc.nextLine();
+		System.out.print("Email: ");
+		email = sc.nextLine();
 		System.out.print("Nationality: ");
 		nationality = sc.nextLine();
 		System.out.print("Gender: ");
@@ -233,7 +236,7 @@ public class Manager {
 		matricNumber = sc.nextLine();
 		String hashedPwd = toHexString(getSHA(password));
 		System.out.println(hashedPwd);
-		Student student = new Student(name, matricNumber, gender, nationality, hashedPwd);
+		Student student = new Student(name, matricNumber, gender, nationality, hashedPwd,email);
 		studentList.add(student);
 		Controllers.studentAdd.main(studentList);
 		
