@@ -20,6 +20,16 @@ public class studentAdd {
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             PrintWriter pr = new PrintWriter(br);
+
+            /*File file1 = new File("passwords.txt");
+            BufferedWriter passbr = new BufferedWriter(new FileWriter(file1, true));
+            PrintWriter passpr = new PrintWriter(passbr);
+
+            passpr.println(ab.getMatricNumber()+','+ab.getPassword());
+            passpr.close();
+            passbr.close();*/
+
+
             pr.println(Save);
             pr.close();
             br.close();

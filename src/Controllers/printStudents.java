@@ -56,7 +56,7 @@ public class printStudents {
             e.printStackTrace();
             System.exit(0);
         }
-        System.out.println("All student ids registered:");
+        //System.out.println("All student ids registered:");
         //System.out.println(studentSet);
 
         try {

@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 public class updateCourse {
-    public static void main(String agrs[]) throws IOException {
+    public static void main(String args[]) throws IOException {
         Scanner sc = new Scanner(System.in);
         String courseCode;
         System.out.print("Enter course code for the course to be updated: ");

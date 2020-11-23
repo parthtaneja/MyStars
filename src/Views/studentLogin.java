@@ -8,6 +8,7 @@ import Models.Manager;
 public class studentLogin {
     public static void main(Manager manager)  {
         Scanner sc = new Scanner(System.in);
+        //Manager manager = new Manager();
         LocalTime time = LocalTime.now();
         //boolean studentTimeCheck =  manager.checkTime(time);
         boolean studentTimeCheck = true;
@@ -31,6 +32,10 @@ public class studentLogin {
                     //System.out.println(text);
                     String[] values = text.split(",");
 
+                    if (manager.testKeys(id,password)) {
+                        System.out.println("Hi, You've successfully logged in");
+                    }
+
                     if(values[0].equals(id)) {
                         //System.out.println("Found the ID");
                         if(values[3].equals(password)) {
@@ -38,6 +43,9 @@ public class studentLogin {
                             ab.close();
                             manager.studentMenu(values[0]);
                         }
+                        //else if (manager.testKeys(values[0],values[3])) {
+                        //    System.out.println("HI");
+                        //}
                         else {
                             System.out.println("Incorrect password!");
                             ab.close();

@@ -69,6 +69,7 @@ public class registerCourse {
             indexNumber = sc.nextLine();
         }
 
+
         String Save = indexNumber + ',' + index;
         try {
             File file = new File("RegisteredCourses.txt");
@@ -79,7 +80,7 @@ public class registerCourse {
             pr.close();
             br.close();
             fr.close();
-            //System.out.println("SUCCESS");
+            System.out.println("SUCCESS");
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();

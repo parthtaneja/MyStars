@@ -22,6 +22,10 @@ public class adminLogin {
                 //System.out.println(text);
                 String[] values = text.split(",");
 
+                if(manager.admintestKey(id,password)){
+                    System.out.println("YEAH baby yeah");
+                }
+
                 if(values[0].equals(id)) {
                     if(values[1].equals(password)) {
                         System.out.println("Login successful!");
