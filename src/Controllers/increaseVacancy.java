@@ -19,7 +19,7 @@ public class increaseVacancy {
             PrintWriter pr = new PrintWriter(br);
 
             try {
-                boolean flag = false;
+                String studentID = null;
                 String text;
                 File rfile = new File("Courses.txt");
                 Scanner ab = new Scanner(rfile);
@@ -32,13 +32,33 @@ public class increaseVacancy {
 
                         newVacancy = new Integer(values[3]) + 1;
                         if(newVacancy == 1){
-                            flag = Controllers.waitlistCheck.main(indexNumber);
+                            studentID = Controllers.waitlistCheck.main(indexNumber);
                         }
-                        if(flag == true){
+                        String ACTUALID = null;
+                        if(studentID != null){
                             pr.println(text);
+                            try {
+                                String atext;
+                                File afile = new File("Students.txt");
+                                Scanner abc = new Scanner(afile);
+                                while(abc.hasNextLine()) {
+                                    atext = abc.nextLine();
+                                    //System.out.println(text);
+                                    String[] avalues = atext.split(",");
+                                    if(avalues[0].equals(studentID)){
+                                        ACTUALID = avalues[6];
+                                    }
+                                }
+                                abc.close();
+                            }
+                            catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                                System.exit(0);
+                            }
+                            Controllers.SendEmail.Send(ACTUALID, "You have been allocated successfully to the index number: " + indexNumber);
                         }
                         else{
-                            String Save = values[0] + ',' + values[1] + ',' + values[2] + ',' + Integer.toString(newVacancy);
+                            String Save = values[0] + ',' + values[1] + ',' + values[2] + ',' + Integer.toString(newVacancy) + ',' + values[4] + ',' + values[5] + ',' + values[6] + ',' + values[7];
                             //System.out.println(text);
                             //System.out.println(Save);
                             pr.println(Save);

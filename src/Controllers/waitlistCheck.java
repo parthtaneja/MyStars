@@ -12,7 +12,7 @@ import Views.Driver;
 
 import java.io.Console;
 public class waitlistCheck {
-    public static boolean main(String indexNumber) throws IOException {
+    public static String main(String indexNumber) throws IOException {
         String studentID = null;
         try {
             String text;
@@ -33,7 +33,7 @@ public class waitlistCheck {
             System.exit(0);
         }
         if (studentID == null){
-            return false;
+            return null;
         }
         else{
             try {
@@ -98,7 +98,7 @@ public class waitlistCheck {
             Files.deleteIfExists(Paths.get("Waitlist.txt"));
             Path source = Paths.get("WaitlistTemp.txt");
             Files.move(source, source.resolveSibling("Waitlist.txt"));
-            return true;
+            return studentID;
         }
             // Write to registeredcourses with studentID and indexNumber
     }
