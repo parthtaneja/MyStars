@@ -13,7 +13,15 @@ public class Student {
 	private String nationality;
 	private String password;
 	private ArrayList<Course> courses;
-	
+
+	/**
+	 *
+	 * @param name
+	 * @param matricNumber
+	 * @param gender
+	 * @param nationality
+	 * @param password
+	 */
 	public Student( String name, String matricNumber, String gender, String nationality, String password) {
 		this.studentID = matricNumber;
 	    this.name = name;
@@ -24,40 +32,74 @@ public class Student {
 		courses = new ArrayList<Course>();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getStudentID() {
 		return studentID;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getMatricNumber() {
 		return matricNumber;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getGender() {
 		return gender;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getNationality() {
 		return nationality;
 	}
-	
-	
+
+	/**
+	 *
+	 * @return
+	 */
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 *
+	 * @param c
+	 */
 	public void addCourse(Course c)
 	{
 		courses.add(c);
 	}
-	
+
+	/**
+	 *
+	 */
 	public void displayAllCourses() 
 	{
 		if(courses.size() == 0) 
@@ -75,12 +117,19 @@ public class Student {
 		
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public int getCourseCount() 
 	{
 		return courses.size();
 	}
-	
-	
+
+	/**
+	 *
+	 * @param courseCode
+	 */
 	public void dropCourse(String courseCode)
 	{
 		for(int i =0; i<courses.size();i++)
@@ -91,7 +140,12 @@ public class Student {
 			}
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param courseCode
+	 * @return
+	 */
 	public boolean checkCourseCode(String courseCode)
 	{
 		for(int i =0; i<courses.size();i++)
@@ -103,7 +157,12 @@ public class Student {
 		}
 		return false;
 	}
-	
+
+	/**
+	 *
+	 * @param indexNumber
+	 * @param newIndexNumber
+	 */
 	public void changeIndex(int indexNumber, int newIndexNumber) 
 	{
 		for(int i =0; i<courses.size();i++)
@@ -114,7 +173,12 @@ public class Student {
 			}
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param indexNumber
+	 * @return
+	 */
 	public boolean checkCourseIndex(int indexNumber)
 	{
 		for(int i =0; i<courses.size();i++)
@@ -126,7 +190,11 @@ public class Student {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * 
+	 * @return
+	 */
 	@Override
 	public String toString() {
 		return "StudentID: " + studentID + "\nName: " + name + "\nMatric Number: " + matricNumber + "\nGender: "

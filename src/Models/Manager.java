@@ -37,8 +37,9 @@ public class Manager {
 	}
 
 	/**
-	 *
-	 * @return instance
+	 * Gets the instance of a new Manager
+	 * @param
+	 * @return the instance = Manager
 	 */
 	public static Manager getInstance() 
 	{
@@ -49,6 +50,12 @@ public class Manager {
 		return instance;
 	}
 
+	/**
+	 * @Deprecated
+	 * Checks the local time
+	 * @param time
+	 * @return void
+	 */
 	public boolean checkTime(LocalTime time) 
 	{
 		try {
@@ -73,44 +80,86 @@ public class Manager {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Add Course is used to add the Course via the index
+	 * @param index add course index via index
+	 * @return void
+	 */
 	public static void addCourse(String index)
 	{
 		Controllers.registerCourse.main(index);
 
 	}
 
+	/**
+	 * Drop course is to allow the Student to drop the course
+	 * @param index
+	 * @throws IOException
+	 * @return void
+	 */
 	public static void dropCourse(String index) throws IOException {
 		Controllers.deregisterCourse.main(index);
 
 	}
 
+	/**
+	 * To Display the registered courses for each student
+	 * @param index
+	 * @return void
+	 */
 	public static void displayRegisteredCourse(String index)
 	{
 		Views.registeredCourses.main(index);
 
 	}
-	
+
+	/**
+	 * Check the Vacancy of each index
+	 * @param index
+	 * @return void
+	 */
 	public static void checkVacancies(String index)
 	{
 		Controllers.checkVacancy.main(index);
 		
 	}
-	
+
+	/**
+	 * Allow the student to change index reference to changeIndex under Controllers
+	 * @param index
+	 * @throws IOException
+	 * @return void
+	 */
 	public static void changeIndex(String index) throws IOException {
 		Controllers.changeIndex.main(index);
 	}
-	
+
+	/**
+	 * To view the Student Menu in the Console
+	 * @param index
+	 * @return void
+	 */
 	public void studentMenu(String index)
 	{
 		Views.StudentMenu.main(index);
 	}
 
+	/**
+	 * Allows the student to swop index
+	 * @param index
+	 * @throws IOException
+	 */
 	public static void swopIndex(String index) throws IOException {
 		Controllers.swopIndex.main(index);
 
 	}
 
+	/**
+	 * Display Admin Menu
+	 * @param
+	 * @return void
+	 */
 	public void AdminMenu() 
 	{
 		while(true)
@@ -182,6 +231,11 @@ public class Manager {
 		}
 	}
 
+	/**
+	 * Allows the Admin to add each Student
+	 * @param
+	 * @return void
+	 */
 	private void addStudent()
 	{
 		String name="";
@@ -284,7 +338,12 @@ public class Manager {
 		studentAdd.main(studentList);
 		
 	}
-	
+
+	/**
+	 * Allows the Admin to add a Course
+	 * @param
+	 * @return void
+	 */
 	private void addCourse()
 	{
 		String courseCode;
@@ -307,10 +366,21 @@ public class Manager {
 		Controllers.courseAdd.main(courseList);
 	}
 
+	/**
+	 * Allows the Admin to Update the Courses
+	 * @param
+	 * @return void
+	 * @throws IOException
+	 */
 	public static void updateCourse() throws IOException {
 		Controllers.updateCourse.main(null);
 	}
 
+	/**
+	 * Allows the Admin to Check Vacancy of each index/Course
+	 * @param
+	 * @return void
+	 */
 	public static void checkSlot()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -345,11 +415,21 @@ public class Manager {
 		
 	}
 
+	/**
+	 * Reference printStudents Class in printStudents.java
+	 * @param
+	 * @return void
+	 */
 	private void printStudentList()
 	{
 		Controllers.printStudents.main(null);
 	}
 
+	/**
+	 * Allows the Admin to edit the Student Period
+	 * @param
+	 * @return void
+	 */
 	private void editStudentPeriod()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -402,6 +482,7 @@ public class Manager {
 			return testKey(str, st1);
 		}*/
 
+		/*
 		public Boolean loginStudent() {
 
 			Scanner sc = new Scanner(System.in); // System.in is a standard input stream
@@ -412,127 +493,157 @@ public class Manager {
 			char[] passwordArray = console.readPassword("Enter password (it will be invisible): ");
 			String st1 = new String(passwordArray);
 			return testKeys(str, st1);
+		}*/
+
+	/**
+	 * Gets the SHA-256 hashed passwords
+	 * @param input
+	 * @return the SHA-256 hashed items
+	 * @throws NoSuchAlgorithmException
+	 */
+
+	public byte[] getSHA(String input) throws NoSuchAlgorithmException {
+		// Static getInstance method is called with hashing SHA
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+		// digest() method called
+		// to calculate message digest of an input
+		// and return array of byte
+		return md.digest(input.getBytes(StandardCharsets.UTF_8));
+	}
+
+	public String toHexString(byte[] hash) {
+		// Convert byte array into signum representation
+		BigInteger number = new BigInteger(1, hash);
+
+		// Convert message digest into hex value
+		StringBuilder hexString = new StringBuilder(number.toString(16));
+
+		// Pad with leading zeros
+		while (hexString.length() < 32) {
+			hexString.insert(0, '0');
 		}
 
-		public byte[] getSHA(String input) throws NoSuchAlgorithmException {
-			// Static getInstance method is called with hashing SHA
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
+		return hexString.toString();
+	}
 
-			// digest() method called
-			// to calculate message digest of an input
-			// and return array of byte
-			return md.digest(input.getBytes(StandardCharsets.UTF_8));
+	/**
+	 * Generates the SHA-256 by getting the string needed to be hashed
+	 * @param s1
+	 * @return hashed string
+	 */
+	public String generate(String s1) {
+		try {
+			s1 = toHexString(getSHA(s1));
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println("Exception thrown for incorrect hash algorithm: " + e);
 		}
+		return s1;
+	}
 
-		public String toHexString(byte[] hash) {
-			// Convert byte array into signum representation
-			BigInteger number = new BigInteger(1, hash);
+	/**
+	 * Admin Hashed username and password function
+	 * @param uname username, eg U1982322K
+	 * @param upass password, eg 12332
+	 * @return boolean which is true for correct password and false for wrong passwords
+	 */
+	public Boolean admintestKey(String uname, String upass) {
 
-			// Convert message digest into hex value
-			StringBuilder hexString = new StringBuilder(number.toString(16));
+		String userNameHash = generate(uname);
+		String passwordHash = generate(upass);
 
-			// Pad with leading zeros
-			while (hexString.length() < 32) {
-				hexString.insert(0, '0');
-			}
+		try {
 
-			return hexString.toString();
-		}
+			FileReader fr = new FileReader("AdminPass.txt");
+			BufferedReader in = new BufferedReader(fr);
+			String hash1, hash2;
+			String str;
+			while ((str = in.readLine()) != null) {
+				//System.out.println(str);
+				// splitting lines on the basis of token
+				String[] tokens = str.split(",");
+				hash1 = tokens[0];
+				//System.out.println(str);
+				hash2 = tokens[1];
+				if (hash1.equals(userNameHash) && hash2.equals(passwordHash))
+					return true;
 
-		public String generate(String s1) {
-			try {
-				s1 = toHexString(getSHA(s1));
-			} catch (NoSuchAlgorithmException e) {
-				System.out.println("Exception thrown for incorrect hash algorithm: " + e);
-			}
-			return s1;
-		}
-
-		public Boolean admintestKey(String uname, String upass) {
-
-			String userNameHash = generate(uname);
-			String passwordHash = generate(upass);
-
-			try {
-
-				FileReader fr = new FileReader("AdminPass.txt");
-				BufferedReader in = new BufferedReader(fr);
-				String hash1, hash2;
-				String str;
-				while ((str = in.readLine()) != null) {
-					//System.out.println(str);
-					// splitting lines on the basis of token
-					String[] tokens = str.split(",");
-					hash1 = tokens[0];
-					//System.out.println(str);
-					hash2 = tokens[1];
-					if (hash1.equals(userNameHash) && hash2.equals(passwordHash))
-						return true;
-
-
-				}
-			}
-
-			catch (Exception e) {
-				System.out.println("File Read Error login");
-			}
-
-			return false;
-		}
-
-
-
-		public void createHash (String uname, String upass){
-
-			String userNameHash = generate(uname);
-			String passwordHash = generate(upass);
-			try {
-				var myWriter = new FileWriter("passwords.txt",true);
-				String line = "";
-				line = userNameHash + "," + passwordHash;
-				myWriter.write(System.lineSeparator());
-				System.out.println(line);
-				myWriter.write(line);
-				myWriter.close();
-			} catch (IOException e) {
-				System.out.println("An error occurred. pass");
-			}
-
-		}
-		public Boolean testKeys(String uname, String upass) {
-
-			String userNameHash = generate(uname);
-			String passwordHash = generate(upass);
-			//FileReader fr;
-
-			//System.out.println((userNameHash+passwordHash));
-
-			try {
-				FileReader fr = new FileReader("passwords.txt");
-				BufferedReader in = new BufferedReader(fr);
-				String hash1, hash2;
-				//String str1 = in.readLine();
-				String str;
-				while ((str = in.readLine()) != null) {
-					//System.out.println(str);
-					// splitting lines on the basis of token
-					String[] tokens = str.split(",");
-					hash1 = tokens[0];
-					//System.out.println(str);
-					hash2 = tokens[1];
-					if (hash1.equals(userNameHash) && hash2.equals(passwordHash))
-						return true;
-
-				}
-
-			} catch (Exception e) {
-				System.out.println("dog");
 
 			}
-
-			//System.out.println();
-			return false;
 		}
+
+		catch (Exception e) {
+			System.out.println("File Read Error login");
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * Creating the Hashed passwords and storing it in a file
+	 * @param uname
+	 * @param upass
+	 * @return void
+	 */
+	public void createHash (String uname, String upass){
+
+		String userNameHash = generate(uname);
+		String passwordHash = generate(upass);
+		try {
+			var myWriter = new FileWriter("passwords.txt",true);
+			String line = "";
+			line = userNameHash + "," + passwordHash;
+			myWriter.write(System.lineSeparator());
+			System.out.println(line);
+			myWriter.write(line);
+			myWriter.close();
+		} catch (IOException e) {
+			System.out.println("An error occurred. pass");
+		}
+
+	}
+
+	/**
+	 * Student login test
+	 * @param uname
+	 * @param upass
+	 * @return boolean like the above function true for correct passwords
+	 */
+	public Boolean testKeys(String uname, String upass) {
+
+		String userNameHash = generate(uname);
+		String passwordHash = generate(upass);
+		//FileReader fr;
+
+		//System.out.println((userNameHash+passwordHash));
+
+		try {
+			FileReader fr = new FileReader("passwords.txt");
+			BufferedReader in = new BufferedReader(fr);
+			String hash1, hash2;
+			//String str1 = in.readLine();
+			String str;
+			while ((str = in.readLine()) != null) {
+				//System.out.println(str);
+				// splitting lines on the basis of token
+				String[] tokens = str.split(",");
+				hash1 = tokens[0];
+				//System.out.println(str);
+				hash2 = tokens[1];
+				if (hash1.equals(userNameHash) && hash2.equals(passwordHash))
+					return true;
+
+			}
+
+		} catch (Exception e) {
+			System.out.println("dog");
+
+		}
+
+		//System.out.println();
+		return false;
+	}
 
 
 
