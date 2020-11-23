@@ -7,7 +7,13 @@ import Models.Manager;
 import Views.Driver;
 import Models.Student;
 public class StudentMenu {
+    /**
+     * Display the Student Menu
+     * @param index
+     * @return void
+     */
     public static void main(String index){
+
         Scanner sc = new Scanner(System.in);
         while(true)
         {

@@ -6,6 +6,11 @@ import java.util.*;
 import Models.Manager;
 
 public class studentLogin {
+    /**
+     * Allow the Student to login by checking the username and password
+     * @param manager
+     * @return void
+     */
     public static void main(Manager manager)  {
         Scanner sc = new Scanner(System.in);
         //Manager manager = new Manager();

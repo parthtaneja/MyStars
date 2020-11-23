@@ -5,6 +5,11 @@ import java.util.*;
 import Models.Manager;
 
 public class adminLogin {
+    /**
+     * Checks whether the Admin can log in with the correct username & password
+     * @param manager
+     * @return void
+     */
     public static void main(Manager manager)  {
         Scanner sc = new Scanner(System.in);
         String id;

@@ -5,9 +5,13 @@ import Models.Manager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Driver {
-	
+	/**
+	 * Driver Code
+	 * @param agrs
+	 * @return void
+	 */
    public static void main(String agrs[]) {
-	  
+
 	   Manager manager = Manager.getInstance();
 	   Scanner sc = new Scanner(System.in); 
 	   while (true) {

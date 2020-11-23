@@ -8,6 +8,11 @@ import Views.Driver;
 import Models.Student;
 
 public class registeredCourses {
+    /**
+     * Find All Registered Courses
+     * @param index
+     * @return void
+     */
     public static void main(String index)  {
         Set<String> hashSet = new HashSet<String>();
         System.out.println("Displaying all index numbers registered:");
