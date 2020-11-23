@@ -15,12 +15,13 @@ public class Student {
 	private ArrayList<Course> courses;
 
 	/**
-	 *
+	 * Getter method for Student
 	 * @param name
 	 * @param matricNumber
 	 * @param gender
 	 * @param nationality
 	 * @param password
+	 * @return void
 	 */
 	public Student( String name, String matricNumber, String gender, String nationality, String password) {
 		this.studentID = matricNumber;
@@ -33,64 +34,65 @@ public class Student {
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student ID
+	 * @return void
 	 */
 	public String getStudentID() {
 		return studentID;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student NAME
+	 * @return void
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student Matric No.
+	 * @return void
 	 */
 	public String getMatricNumber() {
 		return matricNumber;
 	}
 
 	/**
-	 *
-	 * @return
+	 *Getter method for Student gender
+	 * @return void
 	 */
 	public String getGender() {
 		return gender;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student nationality
+	 * @return void
 	 */
 	public String getNationality() {
 		return nationality;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student Courses
+	 * @return void
 	 */
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Getter method for Student password
+	 * @return void
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 *
+	 * Getter method for adding each Course c for each student
 	 * @param c
+	 * @return void
 	 */
 	public void addCourse(Course c)
 	{
@@ -98,7 +100,9 @@ public class Student {
 	}
 
 	/**
-	 *
+	 * Display all courses for students
+	 * @param
+	 * @return void
 	 */
 	public void displayAllCourses() 
 	{
@@ -118,7 +122,7 @@ public class Student {
 	}
 
 	/**
-	 *
+	 * @param
 	 * @return
 	 */
 	public int getCourseCount() 
@@ -129,6 +133,7 @@ public class Student {
 	/**
 	 *
 	 * @param courseCode
+	 * @return void
 	 */
 	public void dropCourse(String courseCode)
 	{
@@ -144,7 +149,7 @@ public class Student {
 	/**
 	 *
 	 * @param courseCode
-	 * @return
+	 * @return void
 	 */
 	public boolean checkCourseCode(String courseCode)
 	{
@@ -192,8 +197,8 @@ public class Student {
 	}
 
 	/**
-	 * 
-	 * @return
+	 *
+	 * @return a string
 	 */
 	@Override
 	public String toString() {
