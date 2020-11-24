@@ -5,6 +5,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class Manager {
 		Views.StudentMenu.main(index);
 	}
 
-	public static void swopIndex(String index) throws IOException {
+	public static void swopIndex(String index) throws IOException, NoSuchAlgorithmException {
 		Controllers.swopIndex.main(index);
 
 	}
@@ -321,8 +322,50 @@ public class Manager {
 
 	private void editStudentPeriod()
 	{
+		String startDate;
+		String endDate;
+		String[] values;
 		Scanner sc = new Scanner(System.in);
 	    int start, end;
+
+		System.out.print("Enter start date (YYYY-MM-DD): ");
+		startDate = sc.nextLine();
+		values = startDate.split("-");
+		while(values.length != 3){
+			System.out.print("Enter start date (YYYY-MM-DD): ");
+			startDate = sc.nextLine();
+			values = startDate.split("-");
+		}
+
+		System.out.print("Enter end date (YYYY-MM-DD): ");
+		endDate = sc.nextLine();
+		values = endDate.split("-");
+		while(values.length != 3){
+			System.out.print("Enter end date (YYYY-MM-DD): ");
+			endDate = sc.nextLine();
+			values = endDate.split("-");
+		}
+		LocalDate startDATE = LocalDate.parse(startDate);
+		LocalDate endDATE = LocalDate.parse(endDate);
+		String NewSave = startDATE.toString() + "," + endDate.toString();
+		try {
+			File file = new File("Date.txt");
+			FileWriter fr = new FileWriter(file, false);
+			BufferedWriter br = new BufferedWriter(fr);
+			PrintWriter pr = new PrintWriter(br);
+			pr.println(NewSave);
+			pr.close();
+			br.close();
+			fr.close();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 	    System.out.print("Enter start value for student time (hour): ");
 	    start = sc.nextInt();
 	    while(start < 0 || start > 24){

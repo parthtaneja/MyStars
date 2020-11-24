@@ -42,7 +42,7 @@ public class SendEmail {
             message.setText(MessageToSend);
 
             Transport.send(message);
-            System.out.println("Email notification sent to " + recieverEmail + "!");
+            //System.out.println("Email notification sent to " + recieverEmail + "!");
 
         } catch (MessagingException e) {
             //e.printStackTrace();

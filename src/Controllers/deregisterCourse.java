@@ -40,6 +40,10 @@ public class deregisterCourse {
         String indexNumber;
         Scanner sc = new Scanner(System.in);
         indexNumber = sc.nextLine();
+        while(!hashSet.contains(indexNumber)){
+            System.out.println("Enter index number to drop: ");
+            indexNumber = sc.nextLine();
+        }
 
         File file = new File("RTemp.txt");
         FileWriter fr = new FileWriter(file, true);

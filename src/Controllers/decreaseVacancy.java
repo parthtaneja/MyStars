@@ -29,7 +29,7 @@ public class decreaseVacancy {
                     if(values[2].equals(indexNumber)) {
 
                         Integer newVacancy = new Integer(values[3]) - 1;
-                        String Save = values[0] + ',' + values[1] + ',' + values[2] + ',' + Integer.toString(newVacancy);
+                        String Save = values[0] + ',' + values[1] + ',' + values[2] + ',' + Integer.toString(newVacancy) + "," + values[4] + "," + values[5] + "," + values[6] + "," + values[7];
                         //System.out.println(text);
                         //System.out.println(Save);
                         pr.println(Save);

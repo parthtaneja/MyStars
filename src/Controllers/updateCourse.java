@@ -9,28 +9,43 @@ import Models.Student;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalTime;
 public class updateCourse {
     public static void main(String agrs[]) throws IOException {
         Scanner sc = new Scanner(System.in);
-        String courseCode;
-        System.out.print("Enter course code for the course to be updated: ");
-        courseCode = sc.nextLine();
-
+        String indexNumber;
+        System.out.print("Enter index number for the course to be updated: ");
+        indexNumber = sc.nextLine();
+        LocalTime startTime;
+        LocalTime endTime;
         String newCourseCode;
         String newschool;
         int newindexNumber;
         int newvacancy;
+        String day;
+        String venue;
+        int start;
+        int end;
+        // NEED TO ADD SOME THINGS HERE
         System.out.println("Enter Information for Course Again");
         System.out.print("School: ");
         newschool = sc.nextLine();
         System.out.print("Course Code: ");
         newCourseCode = sc.nextLine();
-        System.out.print("Index Number: ");
-        newindexNumber = sc.nextInt();
+        System.out.print("Day: ");
+        day = sc.nextLine();
+        System.out.print("Venue: ");
+        venue = sc.nextLine();
+        System.out.print("Start time (Hour): ");
+        start = sc.nextInt();
+        System.out.print("End time (Hour): ");
+        end = sc.nextInt();
         System.out.print("Vacancy: ");
         newvacancy = sc.nextInt();
+        startTime = LocalTime.of(start, 0, 0);
+        endTime = LocalTime.of(end, 0, 0);
 
-        File file = new File("Courses.txt");
+        File file = new File("CoursesTemp.txt");
         FileWriter fr = new FileWriter(file, true);
         BufferedWriter br = new BufferedWriter(fr);
         PrintWriter pr = new PrintWriter(br);
@@ -43,9 +58,9 @@ public class updateCourse {
             //System.out.println(text);
             String[] values = text.split(",");
 
-            if(values[1].equals(courseCode)) {
+            if(values[2].equals(indexNumber)) {
                 //System.out.println("Found the ID");
-                String Save = newschool + ',' + newCourseCode + ',' + newindexNumber + ',' + newvacancy;
+                String Save = newschool + ',' + newCourseCode + ',' + indexNumber + ',' + newvacancy + ',' + day + ',' + venue + ',' + startTime.toString() + ',' + endTime.toString();
                 pr.println(Save);
             }
             else{
@@ -58,7 +73,7 @@ public class updateCourse {
         fr.close();
 
         Files.deleteIfExists(Paths.get("Courses.txt"));
-        Path source = Paths.get("Courses.txt");
+        Path source = Paths.get("CoursesTemp.txt");
         Files.move(source, source.resolveSibling("Courses.txt"));
     }
 }

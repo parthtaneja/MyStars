@@ -1,6 +1,7 @@
 package Views;
 import java.io.IOException;
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalTime;
 import java.util.*;
 import Models.Manager;
@@ -68,7 +69,7 @@ public class StudentMenu {
                     }
                 }
             }
-            catch(InputMismatchException | IOException ex)
+            catch(InputMismatchException | IOException | NoSuchAlgorithmException ex)
             {
                 System.out.println("Please enter a Integer");
             }
